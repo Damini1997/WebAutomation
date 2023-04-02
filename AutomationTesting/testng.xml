@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+<listeners>
+
+<listener class-name ="com.ecommerce.ExtentReport.Listner"/>
+
+</listeners>
+
+  <test thread-count="1" name="Test">
+    <classes>
+      <class name="com.ecommerce.testcases.ForgotPasswordTest"/>
+      <class name="com.ecommerce.testcases.ReviewPaymentTest"/>
+      <class name="com.ecommerce.testcases.CreateAccountPageTest"/>
+      <class name="com.ecommerce.testcases.OrderConfirmationPageTest"/>
+      <class name="com.ecommerce.testcases.WomenPageTest"/>
+      <class name="com.ecommerce.testcases.YogaCollectionTest"/>
+      <class name="com.ecommerce.testcases.ShippingCartPageTest"/>
+      <class name="com.ecommerce.testcases.IndexPageTest"/>
+      <class name="com.ecommerce.testcases.LoginPageTest"/>
+      <class name="com.ecommerce.testcases.AddToCartPageTest"/>
+      <class name="com.ecommerce.testcases.HomePageTest"/>
+      <class name="com.ecommerce.testcases.ShippingPageTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
