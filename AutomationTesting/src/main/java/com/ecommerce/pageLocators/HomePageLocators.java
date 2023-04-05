@@ -48,5 +48,8 @@ public class HomePageLocators extends Base {
 	
 	@FindBy(id="top-cart-btn-checkout")
 	protected WebElement proceed_to_checkout_button;
+	
+	@FindBy(xpath="//h2[normalize-space()='Hot Sellers']")
+	protected WebElement hotSellersText;
 
 }

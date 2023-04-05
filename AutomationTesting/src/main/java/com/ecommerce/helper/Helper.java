@@ -12,55 +12,49 @@ import com.ecommerce.base.Base;
 import com.ecommerce.inteface.IHelper;
 
 public class Helper extends Base implements IHelper {
-	
-	
+
 	Actions action = new Actions(driver);
-	   public static WebDriverWait wait;
-	    static int time = 30;
-	    JavascriptExecutor js;
-	
+	public static WebDriverWait wait;
+	static int time = 30;
+	JavascriptExecutor js;
+
 	public static void elementToBeClickaleWait(WebElement element) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
+	
 
-	/**
-	 * 
-	 * @param element
-	 */
+	
 	public static void elementToBeVisibleWait(WebElement element) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
-	
-	public static void ElementtoBeVisibleText(WebElement element,String text) {
-		
+	public static void ElementtoBeVisibleText(WebElement element, String text) {
+
 		wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.textToBePresentInElement(element, text));
 	}
-	
-	
-	
 
 	public void clickOnElement(WebElement element) {
 		elementToBeClickaleWait(element);
 		element.click();
-		
+
 	}
 
 	@Override
 	public void enterInTextbox(WebElement element, String Text) {
 		elementToBeVisibleWait(element);
 		element.sendKeys(Text);
-		
+
 	}
 
 	@Override
 	public void moveToElement(WebElement element) {
 		elementToBeVisibleWait(element);
 		action.moveToElement(element).build().perform();
-		
+
 	}
 
 	@Override
@@ -89,31 +83,30 @@ public class Helper extends Base implements IHelper {
 
 	@Override
 	public void enterintoTextBoxwithClear(WebElement element, String Text) {
-		elementToBeVisibleWait(element); 
-        element.clear();
-        element.sendKeys(Text);
-		  
-		
+		elementToBeVisibleWait(element);
+		element.clear();
+		element.sendKeys(Text);
+
 	}
 
 	@Override
 	public void scrollintoView(WebElement element) {
-		js= (JavascriptExecutor)driver;
+		js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
 	@Override
 	public void JavaScriptClick(WebElement element) {
-		js= (JavascriptExecutor)driver;
+		js = (JavascriptExecutor) driver;
 		js.executeScript("argumetns[0].click()", element);
 	}
 
 	@Override
 	public void scrolltoDown() {
-		
-		 js= (JavascriptExecutor)driver;
-		 js.executeScript("window.scrollBy(0,600)");
-		
+
+		js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,600)");
+
 	}
 
 }

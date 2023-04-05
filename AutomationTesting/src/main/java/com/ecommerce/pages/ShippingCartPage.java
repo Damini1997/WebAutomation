@@ -7,33 +7,34 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.ecommerce.base.Base;
+import com.ecommerce.helper.Helper;
+import com.ecommerce.pageLocators.ShippingCartPageLocators;
 
-public class ShippingCartPage extends Base {
+public class ShippingCartPage extends ShippingCartPageLocators {
+	
+	Helper helper = new Helper();
 
-	@FindBy(id = "cart-221170-qty")
-	WebElement qty_box;
-
-	@FindBy(xpath = "(//a[@title='Edit item parameters'])[1]")
-	WebElement edit_button;
-
-	@FindBy(xpath = "((//a[@title='Remove item'])[3]")
-	WebElement delete_button;
-
-	@FindBy(xpath = "//span[text()='Update Shopping Cart']")
-	WebElement update_shopping_cart_button;
-
-	@FindBy(xpath = "//span[text()='Proceed to Checkout']")
-	WebElement proceed_checkout_button;
-
-	public ShippingCartPage() {
-
-		PageFactory.initElements(driver, this);
-
-	}
 
 	public String getTitleOfPage() {
 
 		return driver.getTitle();
+	}
+	
+	public String getPriceofElement() {
+		
+		return helper.GetTextfromElement(price);
+		
+	}
+	
+	public String getValuefromQtyBox() {
+		
+		return qty.getCssValue("value");
+	}
+	
+	public String getValueOfSubTotal() {
+		
+		return helper.GetTextfromElement(subTotal);
+		
 	}
 
 	public void UpdateCartItems(String cart) {

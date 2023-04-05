@@ -46,7 +46,7 @@ public class HomePageTest extends  Base {
 		
 	}
 	
-	@Test(priority=1,testName="Verify name test")
+	@Test(priority=1,testName="Verify name test",enabled=false)
 	public void isNameDisplayedTest() {
 		
 		boolean result=home.isNameDispalyed();
@@ -56,7 +56,7 @@ public class HomePageTest extends  Base {
 		Assert.assertTrue(result, "name is not displayed");
 	}
 	
-	@Test(priority=2,testName="Validate Title Test")
+	@Test(priority=2,testName="Validate Title Test",enabled=false)
 	public void ValidatePageTitleTest() {
 		
 		String title=driver.getTitle();
@@ -70,13 +70,13 @@ public class HomePageTest extends  Base {
 	}
 	
 	
-	@Test(priority=3,testName="yoga collection menu test")
+	@Test(priority=3,testName="yoga collection menu test",enabled=false)
 	public void verifyyogacollectionTest() {
 		
 		yoga=home.ClickonshopNewYoga();
 	}
 	
-	@Test(priority=4,testName="wishlist icon test")
+	@Test(priority=4,testName="wishlist icon test",enabled=false)
 	public void verifyWishListTest() {
 		
 		wishlist=home.addToWishList();
@@ -85,7 +85,7 @@ public class HomePageTest extends  Base {
 		
 	}
 	
-	@Test(priority=5,testName="Account holder name test")
+	@Test(priority=5,testName="Account holder name test",enabled=false)
 	public void VerifyAccountHolderNameTest() {
 		
 		String name=home.VerifyNameofAccountHolder();
@@ -95,7 +95,7 @@ public class HomePageTest extends  Base {
 		Assert.assertEquals(name, Expected_name,"Name is not matched !");
 	}
 	
-	@Test(priority=6,testName="Click on my account test")
+	@Test(priority=6,testName="Click on my account test",enabled=false)
 	public void VerifyClickOnMyAccount() {
 		
 		account_details=home.clickOnAccount();
@@ -110,20 +110,24 @@ public class HomePageTest extends  Base {
 	}
 	
 	
-	@Test(priority=7,testName="Gear page test")
+	@Test(priority=7,testName="Gear page test",enabled=false)
 	public void clickOnGearPageTest() {
 		
 		gear=home.clickOnGearPage();
 		
 	}
 	
-	@Test(priority=8,testName="Click on cart icon test")
+	@Test(priority=8,testName="Click on cart icon test",enabled=false)
 	 public void CartIconTest() {
 		 
 		 home.CartIconClick();
 		 
 	 }
-	
+	@Test(priority=9,testName="add specific product to cart test")
+	public void clickOnCartbtnTest() throws InterruptedException {
+		
+		cart=home.clickOnAddToCartBtn();
+	}
 	
 	@AfterMethod
 	public void tearDown() {

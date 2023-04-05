@@ -39,7 +39,7 @@ public class Base {
 		
 		FileInputStream ip = null;
 		try {
-			ip = new FileInputStream("D:\\Application\\eclipse-java-2021-06-R-win32-x86_64\\eclipse\\AutomationTesting\\src\\"
+			ip = new FileInputStream(System.getProperty("user.dir")+"\\src\\"
 					+ "test\\resources\\Configuration\\config.properties");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

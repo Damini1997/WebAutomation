@@ -20,6 +20,8 @@ public class Home extends HomePageLocators {
 	Helper helper = new Helper();
 
 	ActionClass act = new ActionClass();
+	
+	String ProductName="Hero Hoodie";
 
 	public Home() {
 
@@ -86,6 +88,25 @@ public class Home extends HomePageLocators {
 	public void CartIconClick() {
 
 		cart_icon.click();
+
+	}
+
+	public AddToCartPage clickOnAddToCartBtn() throws InterruptedException {
+
+		helper.scrollintoView(hotSellersText);
+
+		List<WebElement> products = driver.findElements(By.cssSelector("div.product-item-info"));
+
+		WebElement prod = products.stream()
+				.filter(product -> product
+						.findElement(By.cssSelector("div.product-item-details strong.product-item-name")).getText()
+						.equals(ProductName))
+				.findFirst().orElse(null);
+
+		prod.click();
+
+		Thread.sleep(3000);
+		return new AddToCartPage();
 
 	}
 

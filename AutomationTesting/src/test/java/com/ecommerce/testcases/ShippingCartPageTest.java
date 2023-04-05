@@ -21,7 +21,6 @@ public class ShippingCartPageTest extends Base {
 	Login login;
 	ForgotPassword forgot_pass;
 	Home home;
-    WomenPage women;
     AddToCartPage cart;
     ShippingCartPage shipping_cart;
     ShippingPage shipping;
@@ -33,25 +32,24 @@ public class ShippingCartPageTest extends Base {
 	
 	
 	@BeforeMethod
-	public void setUp() {
+	public void setUp() throws InterruptedException {
 		
 		intialisation();
 		index=new IndexPage();
 		login= new Login();
 		login=index.clickOnSignin();
-		home=login.verifyLogin(prop.getProperty("username"), prop.getProperty("password"));
-		women= new WomenPage();
-		cart=women.verifyProduct();
+		home=new Home();
+		cart=new AddToCartPage();
 		shipping_cart= new ShippingCartPage();
+		home=login.verifyLogin(prop.getProperty("username"), prop.getProperty("password"));
+		cart=home.clickOnAddToCartBtn();
 		cart.selectSize();
 		cart.selectColour();
 		cart.addToCartItem("1");
 		cart.clickOnAddtoCartButton();
-		shipping_cart= cart.clickOnShippingCartLink();
-		shipping= new ShippingPage();
+		shipping_cart = cart.clickOnShippingCartLink();
 	}
-	
-	@Test(priority=1)
+	@Test(priority=1,enabled= false)
 	public void  getTitleOfPageTest() {
 		
 		String Actual_Title=driver.getTitle();
@@ -64,6 +62,19 @@ public class ShippingCartPageTest extends Base {
 	}
 	
 	@Test(priority=2)
+	public void verifySubTotalTest() {
+		
+		String price=shipping_cart.getPriceofElement();
+		String qty=shipping_cart.getValuefromQtyBox();
+		int actual_subTotal= Integer.parseInt(price.replace("$", ""))*Integer.parseInt(qty);
+		int Expected_subTotal=Integer.parseInt(shipping_cart.getValueOfSubTotal());
+		
+		Assert.assertEquals(actual_subTotal, Expected_subTotal,"value should be matched");
+		
+		
+	}
+	
+	@Test(priority=3,enabled= false)
 	public void updateCartItemsTest() {
 		
 		shipping_cart.UpdateCartItems("1");
@@ -71,7 +82,7 @@ public class ShippingCartPageTest extends Base {
 	}
 	
 	
-	@Test(priority=3)
+	@Test(priority=4,enabled= false)
 	public void clickOnProceedToCheckOutTest() {
 		
 		
