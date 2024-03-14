@@ -3,7 +3,6 @@ package com.ecommerce.pageLocators;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -40,6 +39,10 @@ public class IndexPageLocators extends Base {
 	
 	@FindBy(xpath="(//span[normalize-space()=\"What's New\"])[1]")
 	public WebElement Whats_New;
+	
+	@FindBy(xpath="//h2[contains(text(),'Hot Sellers')]")
+	public WebElement hotsellers;
+	
 	
 	
 	

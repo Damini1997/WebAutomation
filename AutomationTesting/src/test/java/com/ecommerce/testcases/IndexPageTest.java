@@ -22,6 +22,7 @@ public class IndexPageTest extends Base {
 	SearchResultPage search;
 	YogaCollection yoga;
    AddToCartPage cart;
+   
 	public IndexPageTest() {
 
 		super();
@@ -34,6 +35,7 @@ public class IndexPageTest extends Base {
 		intialisation();
 		index = new IndexPage();
 		cart= new AddToCartPage();
+		yoga= new YogaCollection();
 	}
 
 	@Test(priority = 1)
@@ -69,23 +71,35 @@ public class IndexPageTest extends Base {
 	}
 
 	@Test(priority = 5)
-	public void verifySearchProductTest() {
-
-		search = index.searchProduct("Hero Hoodie");
+	
+	public void clickOnBannerImageTest() {
+		
+		yoga=index.clickOnBannerImage();
 	}
-
 	@Test(priority = 6)
+	  public void verifySearchProductTest() {
+	  
+	  search = index.searchProduct("Hero Hoodie"); }
+	 
+
+	@Test(priority = 7)
 
 	public void verifyclickonyogabutntest() {
 
 		yoga = index.clickOnshopNewyogabtn();
 	}
 	
+	@Test(priority = 8)
+	public void clickonEachProducttest() {
+		
+		index.clickonEachProduct();
+	}
+	
 	
 	@AfterMethod
 	public void tearDown() {
 
-		driver.quit();;
+		driver.quit();
 
 	}
 

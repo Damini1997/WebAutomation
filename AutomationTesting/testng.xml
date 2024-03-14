@@ -15,7 +15,7 @@
       <class name="com.ecommerce.testcases.HomePageTest">
       <methods>
       
-      <include name="clickOnCartbtnTest"/>
+      <include name="verifysearchProductTest"/>
       
       </methods>
      </class>

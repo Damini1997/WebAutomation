@@ -59,7 +59,7 @@ public class Helper extends Base implements IHelper {
 
 	@Override
 	public void MoveToElemetClick(WebElement element) {
-		elementToBeVisibleWait(element);
+	//	elementToBeVisibleWait(element);
 		action.moveToElement(element).click().build().perform();
 	}
 

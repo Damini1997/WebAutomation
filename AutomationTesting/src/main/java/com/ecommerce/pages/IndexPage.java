@@ -4,13 +4,8 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.ecommerce.action.ActionClass;
-import com.ecommerce.base.Base;
 import com.ecommerce.helper.Helper;
 import com.ecommerce.pageLocators.IndexPageLocators;
 
@@ -53,7 +48,9 @@ public class IndexPage extends IndexPageLocators {
 
 	public SearchResultPage searchProduct(String prod_name) {
 
-		helper.enterintoTextBoxwithClear(searchbox, prod_name);
+		//helper.enterintoTextBoxwithClear(searchbox, prod_name);
+		
+		helper.enterInTextbox(searchbox, prod_name);
 
 		WebElement dropdown = driver.findElement(By.xpath("(//li[@id='qs-option-0'])[1]"));
 
@@ -74,6 +71,32 @@ public class IndexPage extends IndexPageLocators {
 		helper.clickOnElement(Whats_New);
 		return new WhatsNewPage();
 
+	}
+
+	public YogaCollection clickOnBannerImage() {
+
+		WebElement bannerimg = driver.findElement(By.cssSelector("a.block-promo.home-main"));
+		bannerimg.findElement(By.xpath("//span[@class='action more button']")).click();
+		return new YogaCollection();
+	}
+	
+	public void clickonEachProduct() {
+		
+		helper.scrollintoView(hotsellers);
+		
+		List<WebElement> products=driver.findElements(By.xpath("//li[@class='product-item']"));
+		
+		for(int i= 0; i<products.size();i++) {
+			
+			WebElement product=	products.get(i);
+			
+			helper.MoveToElemetClick(product);
+			
+			driver.navigate().back();
+			
+		 products=driver.findElements(By.xpath("//li[@class='product-item']"));
+
+		}
 	}
 
 }

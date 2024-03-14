@@ -21,7 +21,7 @@ public class Home extends HomePageLocators {
 
 	ActionClass act = new ActionClass();
 	
-	String ProductName="Hero Hoodie";
+	String ProductName="shirt for women";
 
 	public Home() {
 
@@ -91,23 +91,24 @@ public class Home extends HomePageLocators {
 
 	}
 
-	public AddToCartPage clickOnAddToCartBtn() throws InterruptedException {
+	public SearchResultPage searchProduct(String prod_name) {
 
-		helper.scrollintoView(hotSellersText);
+		//helper.enterintoTextBoxwithClear(searchbox, prod_name);
+		
+		helper.enterInTextbox(searchbox, prod_name);
 
-		List<WebElement> products = driver.findElements(By.cssSelector("div.product-item-info"));
+		WebElement dropdown = driver.findElement(By.xpath("(//li[@id='qs-option-0'])[1]"));
 
-		WebElement prod = products.stream()
-				.filter(product -> product
-						.findElement(By.cssSelector("div.product-item-details strong.product-item-name")).getText()
-						.equals(ProductName))
-				.findFirst().orElse(null);
-
-		prod.click();
-
-		Thread.sleep(3000);
-		return new AddToCartPage();
-
+		helper.MoveToElemetClick(dropdown);
+		
+	List<WebElement> product_items=driver.findElements(By.xpath("//li[@class='item product product-item']"));
+	
+	
+	   int product_count =product_items.size();
+	   
+	   System.out.println("Product count after search result is " +product_count);
+	   
+		return new SearchResultPage();
 	}
 
 }

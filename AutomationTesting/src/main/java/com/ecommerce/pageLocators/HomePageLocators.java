@@ -51,5 +51,10 @@ public class HomePageLocators extends Base {
 	
 	@FindBy(xpath="//h2[normalize-space()='Hot Sellers']")
 	protected WebElement hotSellersText;
+	
+	@FindBy(id = "search")
+	public WebElement searchbox;
+	
+	
 
 }
